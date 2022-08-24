@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MySQL学习笔记(基础篇) | 李jinzhouの小窝</title><meta name="keywords" content="MySQL, 笔记"><meta name="author" content="李jinzhou"><meta name="copyright" content="李jinzhou"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MySQL学习笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="MySQL学习笔记(基础篇)">
+<meta property="og:url" content="http://lijinzhou-blog.cn/MySQL%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html">
+<meta property="og:site_name" content="李jinzhouの小窝">
+<meta property="og:description" content="MySQL学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.328888.xyz/2022/08/24/w04FB.gif">
+<meta property="article:published_time" content="2022-08-24T05:16:29.000Z">
+<meta property="article:modified_time" content="2022-08-24T07:42:30.073Z">
+<meta property="article:author" content="李jinzhou">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.328888.xyz/2022/08/24/w04FB.gif"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://lijinzhou-blog.cn/MySQL%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL学习笔记(基础篇)',
+  isPost: false,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-08-24 15:42:30'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/custom.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://cdn.cbd.int/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.2"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.328888.xyz/2022/08/23/bYfkE.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header" style="background-image: url('https://s1.328888.xyz/2022/08/23/bAWxP.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">李jinzhouの小窝</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="page-site-info"><h1 id="site-title">MySQL学习笔记(基础篇)</h1></div></header><main class="layout" id="content-inner"><div id="page"><div id="article-container"><h1 id="MySQL🔥🌲入门-基础篇"><a href="#MySQL🔥🌲入门-基础篇" class="headerlink" title="MySQL🔥🌲入门(基础篇)"></a><center>MySQL🔥🌲入门(基础篇)</center></h1><h2 id="1-安装MySQL8"><a href="#1-安装MySQL8" class="headerlink" title="1.安装MySQL8"></a>1.安装MySQL8</h2><p>使用mysql-installer安装一步到位，省区复杂操作。</p>
+<p>下载链接：<br><div class="btns rounded grid5">
+            <a class="button" target="_blank" rel="noopener" href='https://cdn.mysql.com//Downloads/MySQLInstaller/mysql-installer-community-8.0.30.0.msi' title='mysql-installer-community-8.0.30.0.msi'><i class='fas fa-download'></i>mysql-installer-community-8.0.30.0.msi</a>
+          </div></p>
+<h2 id="2-配置环境变量"><a href="#2-配置环境变量" class="headerlink" title="2.配置环境变量"></a>2.配置环境变量</h2><div class="img-wrap"><div class="img-bg"><img class="img" src="https://s1.328888.xyz/2022/08/24/w6r5B.png"/></div></div>
+<p> <kbd>Win</kbd>+<kbd>R</kbd>显示运行窗口，输入cmd使用控制台</p>
+<p>在控制台内输入:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u&#123;账号&#125; -p&#123;密码&#125;</span><br></pre></td></tr></table></figure>
+<p>显示⬇️即为登录成功。</p>
+<div class="img-wrap"><div class="img-bg"><img class="img" src="https://s1.328888.xyz/2022/08/24/w6R6j.png"/></div></div>
+<h2 id="3-基本操作"><a href="#3-基本操作" class="headerlink" title="3.基本操作"></a>3.基本操作</h2><h3 id="注释："><a href="#注释：" class="headerlink" title="注释："></a>注释：</h3><p>在SQL语法内共有三种注释方法(两个单行注释，一个多行注释)。分别是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 单行注释1</span><br><span class="line"># 单行注释2</span><br><span class="line">/* 	多</span><br><span class="line">	行</span><br><span class="line">	注</span><br><span class="line">	释*/</span><br></pre></td></tr></table></figure>
+<h2 id="4-DDL-amp-DQL-amp-DML-amp-DCL"><a href="#4-DDL-amp-DQL-amp-DML-amp-DCL" class="headerlink" title="4.DDL&amp;DQL&amp;DML&amp;DCL"></a>4.DDL&amp;DQL&amp;DML&amp;DCL</h2><p>SQL程序语言的四种类型，对数据库的基本操作都属于这四类，分别为：数据定义语言(DDL)、数据查询语言（DQL）、数据操纵语言（DML）、数据控制语言（DCL）</p>
+<h3 id="4-1-DDL"><a href="#4-1-DDL" class="headerlink" title="4.1.DDL"></a>4.1.DDL</h3><p>数据定义语言(DDL)，是对数据库和表的增删改查。</p>
+<h4 id="查询数据库："><a href="#查询数据库：" class="headerlink" title="查询数据库："></a>查询数据库：</h4><p>语法：show databases;</p>
+<p>（不要忘记结尾的分号）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; show databases;</span><br><span class="line"># 下面为运行结果</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sakila             |</span><br><span class="line">| sys                |</span><br><span class="line">| world              |</span><br><span class="line">+--------------------+</span><br><span class="line">6 rows in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="使用数据库："><a href="#使用数据库：" class="headerlink" title="使用数据库："></a>使用数据库：</h4><p>语法：use {数据库名称};</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; use mysql</span><br><span class="line"># 下面为运行结果</span><br><span class="line">Database changed</span><br></pre></td></tr></table></figure>
+<h4 id="查看当前正在使用的数据库："><a href="#查看当前正在使用的数据库：" class="headerlink" title="查看当前正在使用的数据库："></a>查看当前正在使用的数据库：</h4><p>语法：select database();</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select database();</span><br><span class="line"># 下面为运行结果</span><br><span class="line">+------------+</span><br><span class="line">| database() |</span><br><span class="line">+------------+</span><br><span class="line">| mysql      |</span><br><span class="line">+------------+</span><br><span class="line">1 row in set (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="创建数据库："><a href="#创建数据库：" class="headerlink" title="创建数据库："></a>创建数据库：</h4><p>语法：create database 数据库名称;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database test;</span><br><span class="line"># 下面为运行结果</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h5 id="带判断条件创建数据库：（推荐使用）"><a href="#带判断条件创建数据库：（推荐使用）" class="headerlink" title="带判断条件创建数据库：（推荐使用）"></a>带判断条件创建数据库：（推荐使用）</h5><p>语法：create database if not exists   数据库名称;</p>
+<p>（没有就创建）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database if not exists test1;</span><br><span class="line"># 下面为运行结果</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="删除数据库："><a href="#删除数据库：" class="headerlink" title="删除数据库："></a>删除数据库：</h4><p>语法：drop database 数据库名称；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database test;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h4 id="带判断条件删除数据库：（推荐使用）"><a href="#带判断条件删除数据库：（推荐使用）" class="headerlink" title="带判断条件删除数据库：（推荐使用）"></a>带判断条件删除数据库：（推荐使用）</h4><p>drop database if exists  数据库名称;</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; drop database if exists test1;</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
+<hr>
+<p>创建数据库 db1并使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database db1;</span><br><span class="line">mysql&gt; use db1;</span><br></pre></td></tr></table></figure>
+<h4 id="查询表："><a href="#查询表：" class="headerlink" title="查询表："></a>查询表：</h4><p>show tables;</p>
+<h4 id="创建表："><a href="#创建表：" class="headerlink" title="创建表："></a>创建表：</h4><h4 id="删除表："><a href="#删除表：" class="headerlink" title="删除表："></a>删除表：</h4><h4 id="修改表："><a href="#修改表：" class="headerlink" title="修改表："></a>修改表：</h4><h3 id="4-2-DQL"><a href="#4-2-DQL" class="headerlink" title="4.2.DQL"></a>4.2.DQL</h3><h3 id="4-3-DML"><a href="#4-3-DML" class="headerlink" title="4.3.DML"></a>4.3.DML</h3><h3 id="4-4-DCL"><a href="#4-4-DCL" class="headerlink" title="4.4.DCL"></a>4.4.DCL</h3></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://s1.328888.xyz/2022/08/23/bYfkE.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">李jinzhou</div><div class="author-info__description">不要再摆烂了！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">1</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Ljinzhou" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:771625807@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">网站于2022/08/23日正式建立！</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/08/23/%E5%BB%BA%E7%AB%99%E6%B5%8B%E8%AF%95/" title="建站测试！"><img src="https://s1.328888.xyz/2022/08/23/bREhX.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="建站测试！"/></a><div class="content"><a class="title" href="/2022/08/23/%E5%BB%BA%E7%AB%99%E6%B5%8B%E8%AF%95/" title="建站测试！">建站测试！</a><time datetime="2022-08-23T06:18:54.000Z" title="发表于 2022-08-23 14:18:54">2022-08-23</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>分类</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%85%B6%E4%BB%96/"><span class="card-category-list-name">其他</span><span class="card-category-list-count">1</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/%E7%94%9F%E6%B4%BB/" style="font-size: 1.1em; color: #999">生活</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">八月 2022</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">1</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-08-24T07:43:21.297Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://s1.328888.xyz/2022/08/23/bAWxP.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 李jinzhou</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
